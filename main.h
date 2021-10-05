@@ -1,35 +1,42 @@
 #ifndef MAIN_H
 #define MAIN_H
-
-#define BUFSIZE 1025
 #include <stdarg.h>
+int _printf(const char *format, ...);
+int print_char(va_list ap);
+int print_str(va_list ap);
+int print_nbr(va_list ap);
+int print_binary(va_list ap);
+int print_octal(va_list ap);
+int print_hexa_lower(va_list ap);
+int print_hexa_upper(va_list ap);
+int print_unsigned(va_list ap);
+int print_str_unprintable(va_list ap);
+int print_str_reverse(va_list ap);
+int print_ptr(va_list ap);
+int print_rot13(va_list ap);
+int print_percent(va_list ap __attribute__((unused)));
+int print_number(int n);
+int print_unsigned_number(unsigned int n);
+int _putchar(char c);
+int _puts(char *str, int ascii);
+int _nbr_len(int prmNumber);
+int _strlen_recursion(char *s);
+int convert_alpha_numeric(int nb, int upper);
+char *convert_rot13(char *str);
+char *convert_base(unsigned long nb, unsigned int base, int upper);
+char *_strdup(char *str);
+char *convert_base_pointer(unsigned long p);
 
 /**
-  * struct validTypes - structure to lookup functions for valid types
-  * @valid: flags are preceded by a '%' character.
-  * @f: pointer to function
-  */
-typedef struct validTypes
+ * struct flags_printf - struct conversion to function
+ * @c: flag string
+ * @f: pointer to func
+ */
+
+typedef struct flags_printf
 {
-	char *valid;
-	char *(*f)();
-} v_types;
-
-int _printf(const char *format, ...);
-char *(*get_valid_type(char s))(va_list);
-char *found_char(va_list c);
-char *found_string(va_list *s);
-char *found_percent();
-char *found_int(va_list n);
-char *found_unsigned(va_list usign);
-char *found_nothing(char);
-char *found_reverse(va_list s);
-char *found_rot13(va_list s);
-char *found_octal(va_list n);
-char *_memcpy(char *dest, char *src, unsigned int n, unsigned int bufferlen);
-int _strlen(char *s);
-void _puts(char *buffer, int size);
-int alloc_buffer(char *hold, int hlen, char *buffer, int blen, double *total);
-char *ctos(char c);
-
+	char *c;
+	int (*f)(va_list);
+} flags_p;
 #endif
+
