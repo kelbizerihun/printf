@@ -1,30 +1,42 @@
 #ifndef MAIN_H
 #define MAIN_H
-
 #include <stdarg.h>
-int _putchar(char c);
 int _printf(const char *format, ...);
-int print_char(va_list c);
-int print_string(va_list s);
-int print_int(va_list i);
-int print_dec(va_list d);
-int print_rev(va_list r);
-int print_bin(va_list b);
-int print_unsig(va_list u);
-int print_octal(va_list o);
-int print_x(va_list x);
-int print_X(va_list X);
-int print_rot13(va_list R);
-/**
-  * struct code_format - Struct format
-  *
-  * @sc: The specifiers
-  * @f: The function associated
-  */
-typedef struct code_format
-{
-	char *sc;
-	int (*f)(va_list);
-} code_f;
+int print_char(va_list ap);
+int print_str(va_list ap);
+int print_nbr(va_list ap);
+int print_binary(va_list ap);
+int print_octal(va_list ap);
+int print_hexa_lower(va_list ap);
+int print_hexa_upper(va_list ap);
+int print_unsigned(va_list ap);
+int print_str_unprintable(va_list ap);
+int print_str_reverse(va_list ap);
+int print_ptr(va_list ap);
+int print_rot13(va_list ap);
+int print_percent(va_list ap __attribute__((unused)));
+int print_number(int n);
+int print_unsigned_number(unsigned int n);
+int _putchar(char c);
+int _puts(char *str, int ascii);
+int _nbr_len(int prmNumber);
+int _strlen_recursion(char *s);
+int convert_alpha_numeric(int nb, int upper);
+char *convert_rot13(char *str);
+char *convert_base(unsigned long nb, unsigned int base, int upper);
+char *_strdup(char *str);
+char *convert_base_pointer(unsigned long p);
 
-#endif /* MAINH */
+/**
+ * struct flags_printf - struct conversion to function
+ * @c: flag string
+ * @f: pointer to func
+ */
+
+typedef struct flags_printf
+{
+	char *c;
+	int (*f)(va_list);
+} flags_p;
+#endif
+
