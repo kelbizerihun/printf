@@ -1,45 +1,49 @@
 #include "main.h"
+#include <stddef.h>
 #include <stdlib.h>
-
+#include <stdio.h>
 /**
- * _printf - prints any string with certain flags for modification
- * @format: the string of characters to write to buffer
- * Return: an integer that counts how many writes to the buffer were made
+ * _printf - Build out the printf function function
+ * @format: string passed with possible format specifiers
+ * Return: number of characters printed
  */
 int _printf(const char *format, ...)
 {
-	int i = 0, var = 0;
-	va_list v_ls;
-	buffer *buf;
+	int i, blen, hlen;
+	double totalBuffer;
+	double *total;
+	va_list argp;
+	char buffer[BUFSIZE], *holder;
+	char *(*pointer_get_valid)(va_list);
 
-	buf = buf_new();
-	if (buf == NULL)
-		return (-1);
-	if (format == NULL)
-		return (-1);
-	va_start(v_ls, format);
-	while (format[i])
+	for (i = 0; i < BUFSIZE; i++)
 	{
-		buf_wr(buf);
+		buffer[i] = 0;
+	}
+	totalBuffer = 0;
+	pointer_get_valid = NULL;
+	total = &totalBuffer;
+	va_start(argp, format);
+	for (i = blen = hlen = 0; format && format[i]; i++)
+	{
 		if (format[i] == '%')
 		{
-			var = opid(buf, v_ls, format, i);
-			if (var < 0)
-			{
-				i = var;
-				break;
-			}
-			i += var;
-			continue;
+			pointer_get_valid = get_valid_type(format[i + 1]);
+			holder = (pointer_get_valid == NULL) ?
+				found_nothing(format[i + 1]) :
+				pointer_get_valid(argp);
+			hlen = _strlen(holder);
+			blen = alloc_buffer(holder, hlen, buffer, blen, total);
+			i++;
 		}
-		buf->str[buf->index] = format[i];
-		buf_inc(buf);
-		i++;
+		else
+		{
+			holder = ctos(format[i]);
+			blen = alloc_buffer(holder, 1, buffer, blen, total);
+		}
 	}
-	buf_write(buf);
-	if (var >= 0)
-		i = buf->overflow;
-	buf_end(buf);
-	va_end(v_ls);
-	return (i);
+	va_end(argp);
+	_puts(buffer, blen);
+	return (totalBuffer + blen);
 }
+
