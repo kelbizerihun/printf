@@ -1,48 +1,94 @@
 0x11. C - printf
 
-Requirements
-General
+'b' - Binary. Outputs the number in base 2.
 
-Allowed editors: vi, vim, emacs
+'c' - Character. Converts the integer to the corresponding
+      Unicode character before printing.
 
-All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
+'d' - Decimal Integer. Outputs the number in base 10.
 
-All your files should end with a new line
+'o' - Octal format. Outputs the number in base 8.
 
-A README.md file, at the root of the folder of the project is mandatory
+'x' - Hex format. Outputs the number in base 16, using lower-
+      case letters for the digits above 9.
 
-Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
+'X' - Hex format. Outputs the number in base 16, using upper-
+      case letters for the digits above 9.
 
-You are not allowed to use global variables
+'n' - Number. This is the same as 'd', except that it uses the
+      current locale setting to insert the appropriate
+      number separator characters.
 
-No more than 5 functions per file
+'' (None) - the same as 'd'
 
-In the following examples, the main.c files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if
+'e' - Exponent notation. Prints the number in scientific
+      notation using the letter 'e' to indicate the exponent.
 
-you do we won’t take them into account). We will use our own main.c files at compilation. Our main.c files might be different from the one shown in the examples
+'E' - Exponent notation. Same as 'e' except it converts the
+      number to uppercase.
 
-The prototypes of all your functions should be included in your header file called main.h
+'f' - Fixed point. Displays the number as a fixed-point
+      number.
 
-Don’t forget to push your header file
+'F' - Fixed point. Same as 'f' except it converts the number
+      to uppercase.
 
-All your header files should be include guarded
+'g' - General format. This prints the number as a fixed-point
+      number, unless the number is too large, in which case
+      it switches to 'e' exponent notation.
 
-Note that we will not provide the _putchar function for this project
+'G' - General format. Same as 'g' except switches to 'E'
+      if the number gets to large.
 
-More Info
+'n' - Number. This is the same as 'g', except that it uses the
+      current locale setting to insert the appropriate
+      number separator characters.
 
-Authorized functions and macros
+'%' - Percentage. Multiplies the number by 100 and displays
+      in fixed ('f') format, followed by a percent sign.
 
-write (man 2 write)
+'' (None) - similar to 'g', except that it prints at least one
+      digit after the decimal point.
 
-malloc (man 3 malloc)
+Integer types such as short, int, long, long long, and their unsigned variants,
 
-free (man 3 free)
+are specified by using d, i, o, u, x, and X. Floating-point types such as floa
 
-va_start (man 3 va_start)
+t, double, and long double, are specified by using a, A, e, E, f, F, g, and G.
 
-va_end (man 3 va_end)
+By default, unless they're modified by a size prefix, integer arguments are coe
 
-va_copy (man 3 va_copy)
+rced to int type, and floating-point arguments are coerced to double. On 64-bit
 
-va_arg (man 3 va_arg)
+systems, an int is a 32-bit value; so, 64-bit integers will be truncated when
+
+they're formatted for output unless a size prefix of ll or I64 is used. Pointer
+
+types that are specified by p use the default pointer size for the platform.
+
+Standard Format Specifiers
+
+'<' - Forces the field to be left-aligned within the available
+      space (This is the default.)
+
+'>' - Forces the field to be right-aligned within the
+      available space.
+
+'=' - Forces the padding to be placed after the sign (if any)
+      but before the digits.  This is used for printing fields
+      in the form '+000000120'. This alignment option is only
+      valid for numeric types.
+
+'^' - Forces the field to be centered within the available
+      space.
+      
+
+'+'  - indicates that a sign should be used for both
+       positive as well as negative numbers
+
+'-'  - indicates that a sign should be used only for negative
+       numbers (this is the default behavior)
+
+' '  - indicates that a leading space should be used on
+       positive numbers.
+
