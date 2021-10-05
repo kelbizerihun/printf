@@ -1,45 +1,37 @@
-#include "main.h"
-#include <stdlib.h>
+   
+#ifndef MAIN_H
+#define MAIN_H
+
+#define BUFSIZE 1025
+#include <stdarg.h>
 
 /**
- * _printf - prints any string with certain flags for modification
- * @format: the string of characters to write to buffer
- * Return: an integer that counts how many writes to the buffer were made
- */
-int _printf(const char *format, ...)
+  * struct validTypes - structure to lookup functions for valid types
+  * @valid: flags are preceded by a '%' character.
+  * @f: pointer to function
+  */
+typedef struct validTypes
 {
-	int i = 0, var = 0;
-	va_list v_ls;
-	buffer *buf;
+	char *valid;
+	char *(*f)();
+} v_types;
 
-	buf = buf_new();
-	if (buf == NULL)
-		return (-1);
-	if (format == NULL)
-		return (-1);
-	va_start(v_ls, format);
-	while (format[i])
-	{
-		buf_wr(buf);
-		if (format[i] == '%')
-		{
-			var = opid(buf, v_ls, format, i);
-			if (var < 0)
-			{
-				i = var;
-				break;
-			}
-			i += var;
-			continue;
-		}
-		buf->str[buf->index] = format[i];
-		buf_inc(buf);
-		i++;
-	}
-	buf_write(buf);
-	if (var >= 0)
-		i = buf->overflow;
-	buf_end(buf);
-	va_end(v_ls);
-	return (i);
-}
+int _printf(const char *format, ...);
+char *(*get_valid_type(char s))(va_list);
+char *found_char(va_list c);
+char *found_string(va_list *s);
+char *found_percent();
+char *found_int(va_list n);
+char *found_unsigned(va_list usign);
+char *found_nothing(char);
+char *found_reverse(va_list s);
+char *found_rot13(va_list s);
+char *found_octal(va_list n);
+char *_memcpy(char *dest, char *src, unsigned int n, unsigned int bufferlen);
+int _strlen(char *s);
+void _puts(char *buffer, int size);
+int alloc_buffer(char *hold, int hlen, char *buffer, int blen, double *total);
+char *ctos(char c);
+
+#endif
+
