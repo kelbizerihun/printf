@@ -1,5 +1,5 @@
-ifndef HOLBERTON_H
-#define HOLBERTON_H
+ifndef MAIN_H
+#define MAIN_H
 #include <stdarg.h>
 #ifndef TRUE
 #define TRUE 1
@@ -162,3 +162,4 @@ char is_specifier(char c);
 char is_flag(char c);
 char is_length(char c);
 #endif
+
