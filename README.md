@@ -1,82 +1,48 @@
-Printf
-Our first collaborative project at Holberton School, The printf project is a Low-Level Programming project writen in C language.
+0x11. C - printf
 
-Table of Context
-Files
-change log
-0.0.1 - 2018-19-10
-Authors
-Files
-Goto	Files	Description
-📌	printf.c	Entry point for the printf.
-holberton.h	Header files for the the whole project.
-global_definitions.h	Header file that defines macro for NULL, True, and False.
-📌	opid.c	Contains the functions for handling the function pointers.
-📌	buffer_int.c	Contains function to Allocate and free a Buffer.
-📌	buffer_ops.c	Contains functions related to the buffer.
-📌	buffer_ops2.c	Contains functions related to the buffer.
-📌	write_op_funcs.c	Contains functions related to writing out the Buffer to STDOUT.
-📌	write_op2_funcs.c	Contains a function that converts binary into base 10 number.
-Printf
-file: printf.c
+Requirements
+General
 
-Function	Details
-_printf	prints any string with certain flags for modification
-back to files
+Allowed editors: vi, vim, emacs
 
-opid.c
-file: opid.c
+All your files will be compiled on Ubuntu 20.04 LTS using gcc, using the options -Wall -Werror -Wextra -pedantic -std=gnu89
 
-Function	Details
-opid	opid - scans src string for an operator.
-back to files
+All your files should end with a new line
 
-buffer_int.c
-file: buffer_int.c
+A README.md file, at the root of the folder of the project is mandatory
 
-Function	Details
-buf_new	Function that create a Buffer struct at a default size of 1024
-buf_custom	Function for create a Buffer struct with a custom size
-buf_end	frees buffer structure
-back to files
+Your code should use the Betty style. It will be checked using betty-style.pl and betty-doc.pl
 
-buffer_ops.c
-file: buffer_ops.c
+You are not allowed to use global variables
 
-Function	Details
-buf_size	get the size
-buf_index	gets the current index of
-buf_content	creates a copy of the buffer str field
-buf_write	writes out the buffer string to stdout
-buf_wr	writes and reset the buffer string
-back to files
+No more than 5 functions per file
 
-buffer_ops2.c
-file: buffer_ops2.c
+In the following examples, the main.c files are shown as examples. You can use them to test your functions, but you don’t have to push them to your repo (if
 
-Function	Details
-buf_inc	increment both index and overflow.
-back to files
+you do we won’t take them into account). We will use our own main.c files at compilation. Our main.c files might be different from the one shown in the examples
 
-write_op_funcs.c
-file: write_op_funcs.c
+The prototypes of all your functions should be included in your header file called main.h
 
-Function	Details
-write_char	write a character to buffer
-write_str	writes a string to buffer
-write_mod	write a modulus symbol
-write_int	write integer to the buffer
-append_num	Appends a number as an integer to the buffer
-back to files
+Don’t forget to push your header file
 
-write_op2_funcs.c
-file: write_op2_funcs.c
+All your header files should be include guarded
 
-Function	Details
-write_bin	convert a digit to binary.
-back to files
+Note that we will not provide the _putchar function for this project
 
-change log
-0.0.1 - 2018-19-10
-add Martin Branch
-Git flow initialized to this project.
+More Info
+
+Authorized functions and macros
+
+write (man 2 write)
+
+malloc (man 3 malloc)
+
+free (man 3 free)
+
+va_start (man 3 va_start)
+
+va_end (man 3 va_end)
+
+va_copy (man 3 va_copy)
+
+va_arg (man 3 va_arg)
