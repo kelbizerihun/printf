@@ -1,5 +1,5 @@
 #include <stdarg.h>
-#include "holberton.h"
+#include "main.h"
 #include <stddef.h>
 
 /**
@@ -63,7 +63,7 @@ int _printf(const char *format, ...)
 				func = get_op(format[i + 1]);
 			if (func == NULL)
 			{
-				_putchar(format[i]);
+				_printf(format[i]);
 				sum++;
 				i++;
 			}
@@ -76,7 +76,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(format[i]);
+			_printf(format[i]);
 			sum++;
 			i++;
 		}
@@ -84,4 +84,5 @@ int _printf(const char *format, ...)
 	va_end(ap);
 	return (sum);
 }
+
 
